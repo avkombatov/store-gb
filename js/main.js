@@ -1,7 +1,7 @@
 // класс отвечает за генерацию отдельных товаров
 class ProductList {
   constructor(container = '.products') {
-    this.container = container;
+    this.container = container; // то куда будем выводить товары
     this._goods = []; // данные с сервера
     this._allProducts = [] // готовые сгенерированные экземпляры товаров
 
@@ -41,7 +41,7 @@ class ProductList {
 
       this._allProducts.push(productObject);
 
-      block.insertAdjacentHTML('beforeend', productObject.render());
+      block.insertAdjacentHTML('beforeend', productObject.getGoodHtml());
     }
   }
 }
@@ -55,7 +55,7 @@ class ProductItem {
     this.img = img
   }
 
-  render() {
+  getGoodHtml() {
     return `<div class="product-item" data-id="${this.id}">
                   <img src="${this.img}" alt="Some img">
                   <div class="desc">
